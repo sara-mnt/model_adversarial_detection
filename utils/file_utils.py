@@ -50,14 +50,23 @@ def extract_from_gzip(f):
             raise ValueError('Invalid magic number %d in MNIST label file: %s' %
                             (magic, f.name))
 
-def save_dataset_file(dataset_file_name, data, internal_folder:str=None):
-    os.listdir(DATASETS_FOLDER)
-    if not internal_folder:
-        internal_folder = "dataset_" + str(len(os.listdir(DATASETS_FOLDER)))
-    fpath = DATASETS_FOLDER + "/" + internal_folder + "/" + dataset_file_name
-    file_writer_path = ORCHESTRATOR + "files" + fpath
-    data = json.dumps(data)
+
+class FileStorage:
+    pass
+
+
+def save_dataset(file:FileStorage, internal_folder:str, file_name:str=None,) -> str:
+    directory_path = ORCHESTRATOR + "files" + DATASETS_FOLDER
+    #file_name = file.filename.split(".")[0] + ".npz"
+    if not file_name:
+        file_name = file.filename
+    file_writer_path = directory_path + "/" + internal_folder + "/" + file_name
+    data = open(file.name, "rb").read()
+    #data = file.stream.read()
+    #np.savez(file_writer_path, data)
     res = requests.post(file_writer_path, data=data)
+    return "ok"
+
 
 if __name__ == '__main__':
     data = np.load("/home/sara/loko/datasets/mnist/t10k-labels-idx1-ubyte.npz", allow_pickle=True)

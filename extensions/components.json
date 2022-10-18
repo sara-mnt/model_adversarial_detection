@@ -50,6 +50,16 @@
      "validation": null
     },
     {
+     "name": "data_type",
+     "type": "text",
+     "label": "Data type in dataset",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "Specify if data to save are test or train, labels or images ",
+     "validation": null
+    },
+    {
      "name": "model",
      "type": "asyncSelect",
      "label": "Model",

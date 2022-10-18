@@ -20,6 +20,7 @@ args_list = []
 
 arg = Arg(name="model_file", label= "Model File", type="files")
 internal_folder_arg = Arg(name="internal_folder", label= "Internal dataset folder", description="Save file in internal dataset folder", type="text")
+data_type_arg = Arg(name="data_type", label= "Data type in dataset", description="Specify if data to save are test or train, labels or images ", type="text")
 
 mkvfields = [MKVField(name='cond1', label='Cond1111', required=True),
              MKVField(name='cond2', label='cond2'),
@@ -33,9 +34,11 @@ dataset_arg = AsyncSelect(name='dataset', label='Dataset', url='http://localhost
 adversarial_method_arg = AsyncSelect(name='adversarial_method', label='Adversarial Method', url='http://localhost:8080/services/adversarial_method')
 
 args_list.append(internal_folder_arg)
+args_list.append(data_type_arg)
 args_list.append(model_arg)
 args_list.append(dataset_arg)
 args_list.append(adversarial_method_arg)
+
 
 #########################   INPUT   ###########################
 

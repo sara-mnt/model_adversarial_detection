@@ -2,8 +2,9 @@ loko-extensions == 0.0.1.dev5
 flask-compress
 Pillow
 adversarial-robustness-toolbox
-ds4biz-commons
-ds4biz-flask
 czifile
 matplotlib
-werkzeug
+sanic == 22.6.2
+sanic-cors
+sanic-openapi
+tensorflow

@@ -3,15 +3,15 @@
   "id": "prova_2",
   "description": "",
   "created_on": "14/10/2022, 17:51:10",
-  "last_modify": "18/10/2022, 10:49:20",
+  "last_modify": "18/10/2022, 13:26:39",
   "graphs": {
     "main": {
       "nodes": [
         {
           "id": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
           "position": {
-            "x": 433.82221580449294,
-            "y": -0.4059121451401211
+            "x": 685.822215804493,
+            "y": 65.59408785485988
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -123,7 +123,7 @@
                 "comment": "",
                 "alias": "Images file",
                 "debug": true,
-                "url": "http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz",
+                "url": "http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz",
                 "method": "GET",
                 "accept": "file"
               }
@@ -133,8 +133,8 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 433.82221580449294,
-            "y": -0.4059121451401211
+            "x": 685.822215804493,
+            "y": 65.59408785485988
           },
           "__class__": "Node"
         },
@@ -333,109 +333,6 @@
           "__class__": "Node"
         },
         {
-          "id": "f39f0398-3d89-4c31-9e29-921ac6f25e3c",
-          "position": {
-            "x": 769.4494855504977,
-            "y": 66.52614251015201
-          },
-          "type": "custom",
-          "dragHandle": "#nodeHandle",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "width": 150,
-          "height": 56,
-          "selected": false,
-          "dragging": false,
-          "data": {
-            "name": "Merge",
-            "events": null,
-            "description": "### Description\nThe MERGE component is used to merge the results of multiple components.\n\n### Input\nThe number of inputs is defined using the parameter *Inputs*.\n\n### Output\nIn output are returned dictionaries that have as keys the Inputs defined at the creation of the component and as values the elements received in input from the connected components.",
-            "inputs": [
-              {
-                "label": "images_test",
-                "id": "6bc664b5-5b26-4c8b-a0d8-ae1ade24a3f7"
-              },
-              {
-                "label": "labels_test",
-                "id": "45c9fac6-9f6a-485d-90cb-99eaa3acab77"
-              }
-            ],
-            "outputs": [
-              {
-                "id": "output",
-                "label": "output",
-                "closed": false
-              }
-            ],
-            "configured": true,
-            "options": {
-              "group": "Common",
-              "args": [
-                {
-                  "name": "comment",
-                  "type": "area",
-                  "label": "Node comment",
-                  "helper": "Use it to explain the usage of this node"
-                },
-                {
-                  "name": "alias",
-                  "type": "text",
-                  "label": "Name",
-                  "helper": "Use this name as an alias"
-                },
-                {
-                  "name": "debug",
-                  "type": "boolean",
-                  "label": "Debug to Console",
-                  "divider": true
-                },
-                {
-                  "name": "inputs",
-                  "label": "Inputs",
-                  "type": "multiKeyValue",
-                  "validation": {
-                    "required": "Required field"
-                  },
-                  "fields": [
-                    {
-                      "name": "label",
-                      "placeholder": "Input",
-                      "validation": {
-                        "required": "Required field"
-                      }
-                    }
-                  ]
-                }
-              ],
-              "click": null,
-              "icon": "RiGitMergeFill",
-              "values": {
-                "comment": "",
-                "alias": "",
-                "debug": false,
-                "inputs": [
-                  {
-                    "label": "images_test",
-                    "id": "6bc664b5-5b26-4c8b-a0d8-ae1ade24a3f7"
-                  },
-                  {
-                    "label": "labels_test",
-                    "id": "45c9fac6-9f6a-485d-90cb-99eaa3acab77"
-                  }
-                ]
-              }
-            },
-            "locked": null
-          },
-          "selectable": true,
-          "draggable": true,
-          "positionAbsolute": {
-            "x": 769.4494855504977,
-            "y": 66.52614251015201
-          },
-          "__class__": "Node"
-        },
-        {
           "id": "987a01d9-5061-47d2-9dd6-d13572a37c36",
           "position": {
             "x": 307.57219087732545,
@@ -567,10 +464,10 @@
           "__class__": "Node"
         },
         {
-          "id": "01fcf0ea-481b-46da-a8f0-ddae37bf839d",
+          "id": "c3027df5-ef13-4553-a311-007930ff9705",
           "position": {
-            "x": 1074,
-            "y": 238
+            "x": 1188,
+            "y": 239
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -647,6 +544,16 @@
                   "validation": null
                 },
                 {
+                  "name": "data_type",
+                  "type": "text",
+                  "label": "Data type in dataset",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "Specify if data to save are test or train, labels or images ",
+                  "validation": null
+                },
+                {
                   "name": "model",
                   "type": "asyncSelect",
                   "label": "Model",
@@ -687,8 +594,7 @@
                 "alias": "",
                 "debug": false,
                 "internal_folder": "mnist",
-                "dataset": "",
-                "model": ""
+                "data_type": "y_test"
               }
             },
             "locked": null
@@ -700,45 +606,15 @@
       ],
       "edges": [
         {
-          "id": "reactflow__edge-1cdac4e7-7fc6-44a7-bd58-8355fab018feoutput-f39f0398-3d89-4c31-9e29-921ac6f25e3c6bc664b5-5b26-4c8b-a0d8-ae1ade24a3f7",
+          "id": "reactflow__edge-1cdac4e7-7fc6-44a7-bd58-8355fab018feoutput-c3027df5-ef13-4553-a311-007930ff9705dataset",
           "source": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
           "sourceHandle": "output",
-          "target": "f39f0398-3d89-4c31-9e29-921ac6f25e3c",
-          "targetHandle": "6bc664b5-5b26-4c8b-a0d8-ae1ade24a3f7",
-          "data": {
-            "startColor": "#56A6DC",
-            "stopColor": "#D770AD"
-          },
-          "selected": false,
-          "dragging": false,
-          "__class__": "Edge"
-        },
-        {
-          "id": "reactflow__edge-987a01d9-5061-47d2-9dd6-d13572a37c36output-f39f0398-3d89-4c31-9e29-921ac6f25e3c45c9fac6-9f6a-485d-90cb-99eaa3acab77",
-          "source": "987a01d9-5061-47d2-9dd6-d13572a37c36",
-          "sourceHandle": "output",
-          "target": "f39f0398-3d89-4c31-9e29-921ac6f25e3c",
-          "targetHandle": "45c9fac6-9f6a-485d-90cb-99eaa3acab77",
-          "data": {
-            "startColor": "#56A6DC",
-            "stopColor": "#D770AD"
-          },
-          "selected": false,
-          "dragging": false,
-          "__class__": "Edge"
-        },
-        {
-          "id": "reactflow__edge-1cdac4e7-7fc6-44a7-bd58-8355fab018feoutput-01fcf0ea-481b-46da-a8f0-ddae37bf839ddataset",
-          "source": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
-          "sourceHandle": "output",
-          "target": "01fcf0ea-481b-46da-a8f0-ddae37bf839d",
+          "target": "c3027df5-ef13-4553-a311-007930ff9705",
           "targetHandle": "dataset",
           "data": {
             "startColor": "#56A6DC",
             "stopColor": "#888"
           },
-          "selected": false,
-          "dragging": false,
           "__class__": "Edge"
         }
       ],

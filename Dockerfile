@@ -3,7 +3,7 @@ ARG user
 ARG password
 EXPOSE 8080
 ADD ./requirements.txt /
-RUN pip install --upgrade --extra-index-url https://piplivetech:pip2018@distribution.livetech.site -r /requirements.txt
+RUN pip install --upgrade -r /requirements.txt
 ARG GATEWAY
 ENV GATEWAY=$GATEWAY
 ADD . /plugin
