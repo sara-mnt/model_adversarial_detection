@@ -4,7 +4,7 @@ import os
 
 import numpy as np
 
-from config.app_config import ORCHESTRATOR, DATASETS_FOLDER
+from config.app_config import ORCHESTRATOR, DATASETS_FOLDER, MODELS_FOLDER
 import requests
 
 from utils.loko_extensions import extract_value_args
@@ -57,6 +57,18 @@ class FileStorage:
 
 def save_dataset(file:FileStorage, internal_folder:str, file_name:str=None,) -> str:
     directory_path = ORCHESTRATOR + "files" + DATASETS_FOLDER
+    #file_name = file.filename.split(".")[0] + ".npz"
+    if not file_name:
+        file_name = file.filename
+    file_writer_path = directory_path + "/" + internal_folder + "/" + file_name
+    data = open(file.name, "rb").read()
+    #data = file.stream.read()
+    #np.savez(file_writer_path, data)
+    res = requests.post(file_writer_path, data=data)
+    return "ok"
+
+def save_trained_model(file:FileStorage, internal_folder:str, file_name:str=None,) -> str:
+    directory_path = ORCHESTRATOR + "files" + MODELS_FOLDER
     #file_name = file.filename.split(".")[0] + ".npz"
     if not file_name:
         file_name = file.filename

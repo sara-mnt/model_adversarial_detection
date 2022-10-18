@@ -1,6 +1,6 @@
 [
  {
-  "name": "CW_adversarial_detector",
+  "name": "Model Adversarial Detection",
   "description": "\n### Description\n.....\n### Input\n.....\n### Output\n.....\n\n",
   "group": "Custom",
   "icon": "RiCheckboxBlankCircleFill",
@@ -16,24 +16,28 @@
    {
     "id": "train_model",
     "label": "Train Model",
-    "service": "",
+    "service": "/services/model/train",
     "to": "train_model"
    },
    {
-    "id": "evaluate_model",
-    "label": "Evaluate Model",
-    "service": "estimate_model",
-    "to": "evaluate_model"
+    "id": "detect_model",
+    "label": "Detect Model with adversarial examples",
+    "service": "/services/model/detect",
+    "to": "detect_model"
    }
   ],
   "outputs": [
    {
-    "id": "evaluate_model",
-    "label": "Evaluate Model"
-   },
-   {
     "id": "dataset",
     "label": "Dataset"
+   },
+   {
+    "id": "train_model",
+    "label": "Train Model"
+   },
+   {
+    "id": "detect_model",
+    "label": "Detect Model"
    }
   ],
   "options": {
@@ -46,7 +50,7 @@
      "helper": "",
      "group": "",
      "value": null,
-     "description": "Save file in internal dataset folder",
+     "description": "Internal dataset folder to save file",
      "validation": null
     },
     {
@@ -56,19 +60,32 @@
      "helper": "",
      "group": "",
      "value": null,
-     "description": "Specify if data to save are test or train, labels or images ",
+     "description": "Specify if data to save are test or train, labels or images: y_train, y_test, X_train, X_test",
      "validation": null
     },
     {
-     "name": "model",
+     "name": "model_name",
+     "type": "select",
+     "label": "Model to train",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "Name of the model to train. Base : simple neural network",
+     "validation": null,
+     "options": [
+      "base"
+     ]
+    },
+    {
+     "name": "trained_model",
      "type": "asyncSelect",
-     "label": "Model",
+     "label": "Trained model file",
      "helper": "",
      "group": "",
      "value": null,
      "description": "",
      "validation": null,
-     "url": "http://localhost:8080/services/models"
+     "url": "http://localhost:9999/routes/model_adversarial_detection/services/models"
     },
     {
      "name": "dataset",
@@ -79,18 +96,20 @@
      "value": null,
      "description": "",
      "validation": null,
-     "url": "http://localhost:8080/services/datasets"
+     "url": "http://localhost:9999/routes/model_adversarial_detection/services/datasets"
     },
     {
      "name": "adversarial_method",
-     "type": "asyncSelect",
+     "type": "select",
      "label": "Adversarial Method",
      "helper": "",
      "group": "",
      "value": null,
      "description": "",
      "validation": null,
-     "url": "http://localhost:8080/services/adversarial_method"
+     "options": [
+      "carlini_wagner"
+     ]
     }
    ]
   }

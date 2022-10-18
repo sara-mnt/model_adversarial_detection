@@ -1,6 +1,7 @@
 import numpy as np
 
-from keras.datasets import mnist
+from tensorflow import keras
+from keras.utils import to_categorical
 
 
 def get_hot_encoded_targets(y_train: np.ndarray, y_test: np.ndarray):

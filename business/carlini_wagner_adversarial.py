@@ -12,29 +12,32 @@ models = tf.keras.models
 tf.compat.v1.disable_eager_execution()
 
 
-def estimate_model_affidability(model_path: str, X_train, X_test, y_train, y_test):
-    model = models.load_model(model_path)
+
+def estimate_model_affidability(model, X_train, X_test, y_train, y_test):
     estimator = KerasClassifier(model=model)
     carlini_wagner_attack = CarliniL2Method(classifier=estimator, confidence=0.5,
                                             batch_size=40, max_iter=2)
 
     (X_train, y_train), (X_test, y_test) = get_inputs_targets_test_train(X_train, X_test, y_train, y_test)
 
-    X_train = np.expand_dims(X_train, axis=-1)
-    X_test = np.expand_dims(X_test, axis=-1)
-    y_train = np.expand_dims(y_train, axis=-1)
-    y_test = np.expand_dims(y_test, axis=-1)
+    #X_train = np.expand_dims(X_train, axis=-1)
+    #X_test = np.expand_dims(X_test, axis=-1)
+    #y_train = np.expand_dims(y_train, axis=-1)
+    #y_test = np.expand_dims(y_test, axis=-1)
 
     X_train, X_test = X_train.astype(np.float32), X_test.astype(np.float32)
 
     (X_train, y_train) = (X_train[:3000], y_train[:3000])
 
     y_train = np.argmax(y_train, axis=2)
+    print(X_train.shape)
+    print(y_train.shape)
     x_adversarial = carlini_wagner_attack.generate(x=X_train, y=y_train)
 
-    print(carlini_wagner_attack.confidence)
-
     print(x_adversarial.shape)
+
+    return x_adversarial
+
 
 if __name__ == '__main__':
     modelpath = 'mnist.h5'

@@ -3,21 +3,21 @@
   "id": "prova_2",
   "description": "",
   "created_on": "14/10/2022, 17:51:10",
-  "last_modify": "18/10/2022, 15:10:41",
+  "last_modify": "18/10/2022, 20:29:31",
   "graphs": {
     "main": {
       "nodes": [
         {
           "id": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
           "position": {
-            "x": 685.822215804493,
-            "y": 65.59408785485988
+            "x": 518.822215804493,
+            "y": 57.59408785485988
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
           "sourcePosition": "right",
           "targetPosition": "left",
-          "width": 156,
+          "width": 164,
           "height": 104,
           "selected": false,
           "dragging": false,
@@ -121,7 +121,7 @@
               "icon": "RiUploadCloud2Fill",
               "values": {
                 "comment": "",
-                "alias": "Images file",
+                "alias": "Dataset file",
                 "debug": true,
                 "url": "http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz",
                 "method": "GET",
@@ -133,16 +133,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 685.822215804493,
-            "y": 65.59408785485988
+            "x": 518.822215804493,
+            "y": 57.59408785485988
           },
           "__class__": "Node"
         },
         {
           "id": "5bedec45-c6da-42c6-91e3-1d43f66e85e6",
           "position": {
-            "x": 580.5519829011657,
-            "y": 193.68502864717047
+            "x": 389.55198290116573,
+            "y": 207.68502864717047
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -230,16 +230,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 580.5519829011657,
-            "y": 193.68502864717047
+            "x": 389.55198290116573,
+            "y": 207.68502864717047
           },
           "__class__": "Node"
         },
         {
           "id": "a2f1acf6-5e43-4e8a-befb-50e06f2fd939",
           "position": {
-            "x": 594.672985634988,
-            "y": 355.10565288708403
+            "x": 448.672985634988,
+            "y": 365.10565288708403
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -327,147 +327,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 594.672985634988,
-            "y": 355.10565288708403
+            "x": 448.672985634988,
+            "y": 365.10565288708403
           },
           "__class__": "Node"
         },
         {
-          "id": "987a01d9-5061-47d2-9dd6-d13572a37c36",
+          "id": "12197273-9343-4f1a-8493-cb96e89eda7c",
           "position": {
-            "x": 307.57219087732545,
-            "y": 122.88767252423372
-          },
-          "type": "custom",
-          "dragHandle": "#nodeHandle",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "width": 164,
-          "height": 88,
-          "selected": false,
-          "dragging": false,
-          "data": {
-            "name": "HTTP Request",
-            "events": null,
-            "description": "### Description\nThe HTTP REQUEST component is used to make HTTP requests in the web to microservices external to the LOKO AI platform.\n\n### Input\nInput is only required for HTTP methods that have or require a body (PUT/PATCH/POST). In this case there is no predefined input format.\n\n### Output\nIn this case there is no fixed output format.",
-            "inputs": [
-              {
-                "id": "input",
-                "label": "input"
-              }
-            ],
-            "outputs": [
-              {
-                "id": "output",
-                "label": "output"
-              }
-            ],
-            "configured": true,
-            "options": {
-              "group": "HTTP",
-              "args": [
-                {
-                  "name": "comment",
-                  "type": "area",
-                  "label": "Node comment",
-                  "helper": "Use it to explain the usage of this node"
-                },
-                {
-                  "name": "alias",
-                  "type": "text",
-                  "label": "Name",
-                  "helper": "Use this name as an alias"
-                },
-                {
-                  "name": "debug",
-                  "type": "boolean",
-                  "label": "Debug to Console",
-                  "divider": true
-                },
-                {
-                  "type": "text",
-                  "name": "url",
-                  "label": "URL",
-                  "validation": {
-                    "required": "Required field"
-                  }
-                },
-                {
-                  "name": "method",
-                  "label": "Method",
-                  "type": "select",
-                  "options": [
-                    "GET",
-                    "POST",
-                    "PUT",
-                    "DELETE",
-                    "PATCH"
-                  ],
-                  "validation": {
-                    "required": "Required field"
-                  }
-                },
-                {
-                  "name": "accept",
-                  "label": "Accept",
-                  "type": "select",
-                  "options": [
-                    "text",
-                    "json",
-                    "file"
-                  ],
-                  "validation": {
-                    "required": "Required field"
-                  }
-                },
-                {
-                  "name": "query",
-                  "label": "Query params",
-                  "type": "multiKeyValue",
-                  "fields": [
-                    {
-                      "name": "key",
-                      "placeholder": "Key",
-                      "validation": {
-                        "required": "Required field"
-                      }
-                    },
-                    {
-                      "name": "value",
-                      "placeholder": "Value",
-                      "validation": {
-                        "required": "Required field"
-                      }
-                    }
-                  ]
-                }
-              ],
-              "click": "Launch request",
-              "icon": "RiUploadCloud2Fill",
-              "values": {
-                "comment": "",
-                "alias": "",
-                "debug": true,
-                "url": "http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz",
-                "method": "GET",
-                "accept": "file"
-              }
-            },
-            "locked": null
-          },
-          "selectable": true,
-          "draggable": true,
-          "positionAbsolute": {
-            "x": 307.57219087732545,
-            "y": 122.88767252423372
-          },
-          "__class__": "Node"
-        },
-        {
-          "id": "c3027df5-ef13-4553-a311-007930ff9705",
-          "position": {
-            "x": 1188,
-            "y": 239
+            "x": 1204,
+            "y": 189
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -475,10 +344,10 @@
           "targetPosition": "left",
           "width": 150,
           "height": 56,
-          "selected": false,
-          "dragging": false,
+          "selected": null,
+          "dragging": null,
           "data": {
-            "name": "CW_adversarial_detector",
+            "name": "Model Adversarial Detection",
             "events": null,
             "description": "\n### Description\n.....\n### Input\n.....\n### Output\n.....\n\n",
             "inputs": [
@@ -491,24 +360,28 @@
               {
                 "id": "train_model",
                 "label": "Train Model",
-                "service": "",
+                "service": "/services/model/train",
                 "to": "train_model"
               },
               {
-                "id": "evaluate_model",
-                "label": "Evaluate Model",
-                "service": "estimate_model",
-                "to": "evaluate_model"
+                "id": "detect_model",
+                "label": "Detect Model with adversarial examples",
+                "service": "/services/model/detect",
+                "to": "detect_model"
               }
             ],
             "outputs": [
               {
-                "id": "evaluate_model",
-                "label": "Evaluate Model"
-              },
-              {
                 "id": "dataset",
                 "label": "Dataset"
+              },
+              {
+                "id": "train_model",
+                "label": "Train Model"
+              },
+              {
+                "id": "detect_model",
+                "label": "Detect Model"
               }
             ],
             "configured": true,
@@ -540,7 +413,7 @@
                   "helper": "",
                   "group": "",
                   "value": null,
-                  "description": "Save file in internal dataset folder",
+                  "description": "Internal dataset folder to save file",
                   "validation": null
                 },
                 {
@@ -550,19 +423,32 @@
                   "helper": "",
                   "group": "",
                   "value": null,
-                  "description": "Specify if data to save are test or train, labels or images ",
+                  "description": "Specify if data to save are test or train, labels or images: y_train, y_test, X_train, X_test",
                   "validation": null
                 },
                 {
-                  "name": "model",
+                  "name": "model_name",
+                  "type": "select",
+                  "label": "Model to train",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "Name of the model to train. Base : simple neural network",
+                  "validation": null,
+                  "options": [
+                    "base"
+                  ]
+                },
+                {
+                  "name": "trained_model",
                   "type": "asyncSelect",
-                  "label": "Model",
+                  "label": "Trained model file",
                   "helper": "",
                   "group": "",
                   "value": null,
                   "description": "",
                   "validation": null,
-                  "url": "http://localhost:8080/services/models"
+                  "url": "http://0.0.0.0:9999/routes/model_adversarial_detection/services/models"
                 },
                 {
                   "name": "dataset",
@@ -573,50 +459,34 @@
                   "value": null,
                   "description": "",
                   "validation": null,
-                  "url": "http://localhost:8080/services/datasets"
+                  "url": "http://localhost:9999/routes/model_adversarial_detection/services/datasets"
                 },
                 {
                   "name": "adversarial_method",
-                  "type": "asyncSelect",
+                  "type": "select",
                   "label": "Adversarial Method",
                   "helper": "",
                   "group": "",
                   "value": null,
                   "description": "",
                   "validation": null,
-                  "url": "http://localhost:8080/services/adversarial_method"
+                  "options": [
+                    "carlini_wagner"
+                  ]
                 }
               ],
               "click": "Send message",
               "icon": "RiCheckboxBlankCircleFill",
-              "values": {
-                "comment": "",
-                "alias": "",
-                "debug": false,
-                "internal_folder": "mnist",
-                "data_type": "y_test"
-              }
-            }
+              "values": {}
+            },
+            "locked": null
           },
           "selectable": true,
           "draggable": true,
           "__class__": "Node"
         }
       ],
-      "edges": [
-        {
-          "id": "reactflow__edge-1cdac4e7-7fc6-44a7-bd58-8355fab018feoutput-c3027df5-ef13-4553-a311-007930ff9705dataset",
-          "source": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
-          "sourceHandle": "output",
-          "target": "c3027df5-ef13-4553-a311-007930ff9705",
-          "targetHandle": "dataset",
-          "data": {
-            "startColor": "#56A6DC",
-            "stopColor": "#888"
-          },
-          "__class__": "Edge"
-        }
-      ],
+      "edges": [],
       "__class__": "Graph"
     }
   },

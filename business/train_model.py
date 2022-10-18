@@ -1,41 +1,22 @@
-import os
-import pickle
+import tempfile
 from typing import List
-
-import numpy
+import requests
 import numpy as np
-import matplotlib.pyplot as plt
+
+import tensorflow as tf
+from tensorflow import keras
 from keras import models
 from keras.layers import Dense, Flatten
 from keras.models import Sequential
-from keras.utils import to_categorical
-from keras.datasets import mnist
-from numpy.array_api import astype
 
-from utils.targets_utils import get_inputs_targets_test_train
+from config.app_config import ORCHESTRATOR, MODELS_FOLDER
+
 
 # y_train = np.expand_dims(y_train, axis=-1)  # (60000, 28, 28, 1)
 # y_test = np.expand_dims(y_test, axis=-1)
 
-def get_training_data_from_dataset(dataset_folder:str):
-    dataset_path = "/home/sara/loko/datasets/mnist"
-    for file in os.listdir(dataset_path):
-        f = np.load(file)
-        data_name = list(f.keys())[0]
-        print(data_name)
 
-
-    #(X_train, y_train), (X_test, y_test)
-
-    #(X_train, y_train), (X_test, y_test) = get_inputs_targets_test_train()
-
-    #X_train = np.expand_dims(X_train, axis=-1)  # (60000, 28, 28, 1)
-    #X_test = np.expand_dims(X_test, axis=-1)
-
-    return
-
-get_training_data_from_dataset(dataset_folder="")
-class NeuralNetork:
+class NeuralNetwork:
 
     def create_neural_network(self):
         pass
@@ -53,7 +34,7 @@ class NeuralNetork:
         pass
 
 
-class BaseNeuralNetork(NeuralNetork):
+class BaseNeuralNetwork(NeuralNetwork):
 
     def __init__(self):
         self.model = Sequential()
@@ -76,7 +57,7 @@ class BaseNeuralNetork(NeuralNetork):
               optimizer: str = "adam",
               metrics: List = None,
               model_name: str = "model",
-              save: bool = True):
+              save: bool = True, requests=None):
 
         if not metrics:
             metrics = ["acc"]
@@ -86,14 +67,30 @@ class BaseNeuralNetork(NeuralNetork):
                            metrics=metrics,
                            )
 
-        model.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test))
+        self.model.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test))
 
         if save:
-            self.model.save(f'{model_name}.h5')
+            self.save_model(model_name=model_name)
+
+    def save_model(self, model_name:str):
+        directory_path = ORCHESTRATOR + "files" + MODELS_FOLDER
+        file_writer_path = directory_path + "/" + model_name + ".h5"
+        with tempfile.NamedTemporaryFile(suffix=".h5") as tmp:
+            self.model.save(tmp.name)
+            tmp.seek(0)
+            data = open(tmp.name, "rb").read()
+            res = requests.post(file_writer_path, data=data)
+            # TODO LOGGER
+
+
 
 
 if __name__ == '__main__':
-    predictions = model.predict(X_test)
+
+    nn = BaseNeuralNetwork()
+    nn()
+
+    predictions = nn.model.predict(X_test)
     predictions = np.argmax(predictions, axis=1)
 
     print(predictions)
