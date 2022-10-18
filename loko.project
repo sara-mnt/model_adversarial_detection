@@ -1,0 +1,754 @@
+{
+  "name": "prova_2",
+  "id": "prova_2",
+  "description": "",
+  "created_on": "14/10/2022, 17:51:10",
+  "last_modify": "18/10/2022, 10:49:20",
+  "graphs": {
+    "main": {
+      "nodes": [
+        {
+          "id": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
+          "position": {
+            "x": 433.82221580449294,
+            "y": -0.4059121451401211
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 156,
+          "height": 104,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "HTTP Request",
+            "events": null,
+            "description": "### Description\nThe HTTP REQUEST component is used to make HTTP requests in the web to microservices external to the LOKO AI platform.\n\n### Input\nInput is only required for HTTP methods that have or require a body (PUT/PATCH/POST). In this case there is no predefined input format.\n\n### Output\nIn this case there is no fixed output format.",
+            "inputs": [
+              {
+                "id": "input",
+                "label": "input"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "HTTP",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "type": "text",
+                  "name": "url",
+                  "label": "URL",
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "method",
+                  "label": "Method",
+                  "type": "select",
+                  "options": [
+                    "GET",
+                    "POST",
+                    "PUT",
+                    "DELETE",
+                    "PATCH"
+                  ],
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "accept",
+                  "label": "Accept",
+                  "type": "select",
+                  "options": [
+                    "text",
+                    "json",
+                    "file"
+                  ],
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "query",
+                  "label": "Query params",
+                  "type": "multiKeyValue",
+                  "fields": [
+                    {
+                      "name": "key",
+                      "placeholder": "Key",
+                      "validation": {
+                        "required": "Required field"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "placeholder": "Value",
+                      "validation": {
+                        "required": "Required field"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "click": "Launch request",
+              "icon": "RiUploadCloud2Fill",
+              "values": {
+                "comment": "",
+                "alias": "Images file",
+                "debug": true,
+                "url": "http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz",
+                "method": "GET",
+                "accept": "file"
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 433.82221580449294,
+            "y": -0.4059121451401211
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "5bedec45-c6da-42c6-91e3-1d43f66e85e6",
+          "position": {
+            "x": 580.5519829011657,
+            "y": 193.68502864717047
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 156,
+          "height": 104,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "Trigger",
+            "events": null,
+            "description": "### Description\nThe TRIGGER component is used to start streams.\n\n### Output\nThe parameter Type can be set as a **String** or an **Object**. The parameter Value, on the other hand, defines the actual output of the component.",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Common",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "type",
+                  "type": "select",
+                  "description": "The type of data",
+                  "label": "Type",
+                  "validation": {
+                    "required": "Required field"
+                  },
+                  "fragment": null,
+                  "advanced": false,
+                  "options": [
+                    "String",
+                    "Object"
+                  ],
+                  "value": null
+                },
+                {
+                  "name": "value",
+                  "type": "dynamic",
+                  "dynamicType": {
+                    "String": "area",
+                    "Object": "code"
+                  },
+                  "parent": "type",
+                  "label": "Value",
+                  "validation": {
+                    "required": "Required field"
+                  }
+                }
+              ],
+              "click": "Send message",
+              "icon": "RiPlayFill",
+              "values": {
+                "comment": "",
+                "alias": "Train model",
+                "debug": false,
+                "type": "String",
+                "value": "Hello world!"
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 580.5519829011657,
+            "y": 193.68502864717047
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "a2f1acf6-5e43-4e8a-befb-50e06f2fd939",
+          "position": {
+            "x": 594.672985634988,
+            "y": 355.10565288708403
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 298,
+          "height": 104,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "Trigger",
+            "events": null,
+            "description": "### Description\nThe TRIGGER component is used to start streams.\n\n### Output\nThe parameter Type can be set as a **String** or an **Object**. The parameter Value, on the other hand, defines the actual output of the component.",
+            "inputs": [],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Common",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "type",
+                  "type": "select",
+                  "description": "The type of data",
+                  "label": "Type",
+                  "validation": {
+                    "required": "Required field"
+                  },
+                  "fragment": null,
+                  "advanced": false,
+                  "options": [
+                    "String",
+                    "Object"
+                  ],
+                  "value": null
+                },
+                {
+                  "name": "value",
+                  "type": "dynamic",
+                  "dynamicType": {
+                    "String": "area",
+                    "Object": "code"
+                  },
+                  "parent": "type",
+                  "label": "Value",
+                  "validation": {
+                    "required": "Required field"
+                  }
+                }
+              ],
+              "click": "Send message",
+              "icon": "RiPlayFill",
+              "values": {
+                "comment": "",
+                "alias": "Generate adversarial dataset",
+                "debug": false,
+                "type": "String",
+                "value": "Hello world!"
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 594.672985634988,
+            "y": 355.10565288708403
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "f39f0398-3d89-4c31-9e29-921ac6f25e3c",
+          "position": {
+            "x": 769.4494855504977,
+            "y": 66.52614251015201
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "Merge",
+            "events": null,
+            "description": "### Description\nThe MERGE component is used to merge the results of multiple components.\n\n### Input\nThe number of inputs is defined using the parameter *Inputs*.\n\n### Output\nIn output are returned dictionaries that have as keys the Inputs defined at the creation of the component and as values the elements received in input from the connected components.",
+            "inputs": [
+              {
+                "label": "images_test",
+                "id": "6bc664b5-5b26-4c8b-a0d8-ae1ade24a3f7"
+              },
+              {
+                "label": "labels_test",
+                "id": "45c9fac6-9f6a-485d-90cb-99eaa3acab77"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output",
+                "closed": false
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Common",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "inputs",
+                  "label": "Inputs",
+                  "type": "multiKeyValue",
+                  "validation": {
+                    "required": "Required field"
+                  },
+                  "fields": [
+                    {
+                      "name": "label",
+                      "placeholder": "Input",
+                      "validation": {
+                        "required": "Required field"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "click": null,
+              "icon": "RiGitMergeFill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "inputs": [
+                  {
+                    "label": "images_test",
+                    "id": "6bc664b5-5b26-4c8b-a0d8-ae1ade24a3f7"
+                  },
+                  {
+                    "label": "labels_test",
+                    "id": "45c9fac6-9f6a-485d-90cb-99eaa3acab77"
+                  }
+                ]
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 769.4494855504977,
+            "y": 66.52614251015201
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "987a01d9-5061-47d2-9dd6-d13572a37c36",
+          "position": {
+            "x": 307.57219087732545,
+            "y": 122.88767252423372
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 164,
+          "height": 88,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "HTTP Request",
+            "events": null,
+            "description": "### Description\nThe HTTP REQUEST component is used to make HTTP requests in the web to microservices external to the LOKO AI platform.\n\n### Input\nInput is only required for HTTP methods that have or require a body (PUT/PATCH/POST). In this case there is no predefined input format.\n\n### Output\nIn this case there is no fixed output format.",
+            "inputs": [
+              {
+                "id": "input",
+                "label": "input"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "HTTP",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "type": "text",
+                  "name": "url",
+                  "label": "URL",
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "method",
+                  "label": "Method",
+                  "type": "select",
+                  "options": [
+                    "GET",
+                    "POST",
+                    "PUT",
+                    "DELETE",
+                    "PATCH"
+                  ],
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "accept",
+                  "label": "Accept",
+                  "type": "select",
+                  "options": [
+                    "text",
+                    "json",
+                    "file"
+                  ],
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "query",
+                  "label": "Query params",
+                  "type": "multiKeyValue",
+                  "fields": [
+                    {
+                      "name": "key",
+                      "placeholder": "Key",
+                      "validation": {
+                        "required": "Required field"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "placeholder": "Value",
+                      "validation": {
+                        "required": "Required field"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "click": "Launch request",
+              "icon": "RiUploadCloud2Fill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": true,
+                "url": "http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz",
+                "method": "GET",
+                "accept": "file"
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 307.57219087732545,
+            "y": 122.88767252423372
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "01fcf0ea-481b-46da-a8f0-ddae37bf839d",
+          "position": {
+            "x": 1074,
+            "y": 238
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "CW_adversarial_detector",
+            "events": null,
+            "description": "\n### Description\n.....\n### Input\n.....\n### Output\n.....\n\n",
+            "inputs": [
+              {
+                "id": "dataset",
+                "label": "Dataset",
+                "service": "/services/dataset/read",
+                "to": "dataset"
+              },
+              {
+                "id": "train_model",
+                "label": "Train Model",
+                "service": "",
+                "to": "train_model"
+              },
+              {
+                "id": "evaluate_model",
+                "label": "Evaluate Model",
+                "service": "estimate_model",
+                "to": "evaluate_model"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "evaluate_model",
+                "label": "Evaluate Model"
+              },
+              {
+                "id": "dataset",
+                "label": "Dataset"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Custom",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "internal_folder",
+                  "type": "text",
+                  "label": "Internal dataset folder",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "Save file in internal dataset folder",
+                  "validation": null
+                },
+                {
+                  "name": "model",
+                  "type": "asyncSelect",
+                  "label": "Model",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "",
+                  "validation": null,
+                  "url": "http://localhost:8080/services/models"
+                },
+                {
+                  "name": "dataset",
+                  "type": "asyncSelect",
+                  "label": "Dataset",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "",
+                  "validation": null,
+                  "url": "http://localhost:8080/services/datasets"
+                },
+                {
+                  "name": "adversarial_method",
+                  "type": "asyncSelect",
+                  "label": "Adversarial Method",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "",
+                  "validation": null,
+                  "url": "http://localhost:8080/services/adversarial_method"
+                }
+              ],
+              "click": "Send message",
+              "icon": "RiCheckboxBlankCircleFill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "internal_folder": "mnist",
+                "dataset": "",
+                "model": ""
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "__class__": "Node"
+        }
+      ],
+      "edges": [
+        {
+          "id": "reactflow__edge-1cdac4e7-7fc6-44a7-bd58-8355fab018feoutput-f39f0398-3d89-4c31-9e29-921ac6f25e3c6bc664b5-5b26-4c8b-a0d8-ae1ade24a3f7",
+          "source": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
+          "sourceHandle": "output",
+          "target": "f39f0398-3d89-4c31-9e29-921ac6f25e3c",
+          "targetHandle": "6bc664b5-5b26-4c8b-a0d8-ae1ade24a3f7",
+          "data": {
+            "startColor": "#56A6DC",
+            "stopColor": "#D770AD"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "reactflow__edge-987a01d9-5061-47d2-9dd6-d13572a37c36output-f39f0398-3d89-4c31-9e29-921ac6f25e3c45c9fac6-9f6a-485d-90cb-99eaa3acab77",
+          "source": "987a01d9-5061-47d2-9dd6-d13572a37c36",
+          "sourceHandle": "output",
+          "target": "f39f0398-3d89-4c31-9e29-921ac6f25e3c",
+          "targetHandle": "45c9fac6-9f6a-485d-90cb-99eaa3acab77",
+          "data": {
+            "startColor": "#56A6DC",
+            "stopColor": "#D770AD"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "reactflow__edge-1cdac4e7-7fc6-44a7-bd58-8355fab018feoutput-01fcf0ea-481b-46da-a8f0-ddae37bf839ddataset",
+          "source": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
+          "sourceHandle": "output",
+          "target": "01fcf0ea-481b-46da-a8f0-ddae37bf839d",
+          "targetHandle": "dataset",
+          "data": {
+            "startColor": "#56A6DC",
+            "stopColor": "#888"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        }
+      ],
+      "__class__": "Graph"
+    }
+  },
+  "open": [
+    "main"
+  ],
+  "active": "main",
+  "version": "1.0.0",
+  "__class__": "Project"
+}

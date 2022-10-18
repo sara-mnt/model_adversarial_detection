@@ -1,0 +1,88 @@
+[
+ {
+  "name": "CW_adversarial_detector",
+  "description": "\n### Description\n.....\n### Input\n.....\n### Output\n.....\n\n",
+  "group": "Custom",
+  "icon": "RiCheckboxBlankCircleFill",
+  "click": "Send message",
+  "configured": true,
+  "inputs": [
+   {
+    "id": "dataset",
+    "label": "Dataset",
+    "service": "/services/dataset/read",
+    "to": "dataset"
+   },
+   {
+    "id": "train_model",
+    "label": "Train Model",
+    "service": "",
+    "to": "train_model"
+   },
+   {
+    "id": "evaluate_model",
+    "label": "Evaluate Model",
+    "service": "estimate_model",
+    "to": "evaluate_model"
+   }
+  ],
+  "outputs": [
+   {
+    "id": "evaluate_model",
+    "label": "Evaluate Model"
+   },
+   {
+    "id": "dataset",
+    "label": "Dataset"
+   }
+  ],
+  "options": {
+   "values": {},
+   "args": [
+    {
+     "name": "internal_folder",
+     "type": "text",
+     "label": "Internal dataset folder",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "Save file in internal dataset folder",
+     "validation": null
+    },
+    {
+     "name": "model",
+     "type": "asyncSelect",
+     "label": "Model",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "",
+     "validation": null,
+     "url": "http://localhost:8080/services/models"
+    },
+    {
+     "name": "dataset",
+     "type": "asyncSelect",
+     "label": "Dataset",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "",
+     "validation": null,
+     "url": "http://localhost:8080/services/datasets"
+    },
+    {
+     "name": "adversarial_method",
+     "type": "asyncSelect",
+     "label": "Adversarial Method",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "",
+     "validation": null,
+     "url": "http://localhost:8080/services/adversarial_method"
+    }
+   ]
+  }
+ }
+]
