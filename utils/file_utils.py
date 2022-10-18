@@ -28,10 +28,10 @@ def extract_images(bytestream):
     data = np.frombuffer(buf, dtype=np.uint8)
     data = data.reshape(num_images, rows, cols, 1)
     print(data.shape)
-    #assert data.shape[3] == 1
-    #data = data.reshape(data.shape[0], data.shape[1] * data.shape[2])
-    #data = data.astype(np.float32)
-    #data = np.multiply(data, 1.0 / 255.0)
+    # assert data.shape[3] == 1
+    # data = data.reshape(data.shape[0], data.shape[1] * data.shape[2])
+    # data = data.astype(np.float32)
+    # data = np.multiply(data, 1.0 / 255.0)
     return data
 
 
@@ -48,34 +48,36 @@ def extract_from_gzip(f):
             return extract_images(bytestream)
         else:
             raise ValueError('Invalid magic number %d in MNIST label file: %s' %
-                            (magic, f.name))
+                             (magic, f.name))
 
 
 class FileStorage:
     pass
 
 
-def save_dataset(file:FileStorage, internal_folder:str, file_name:str=None,) -> str:
+def save_dataset(file: FileStorage, internal_folder: str, file_name: str = None, ) -> str:
     directory_path = ORCHESTRATOR + "files" + DATASETS_FOLDER
-    #file_name = file.filename.split(".")[0] + ".npz"
+    # file_name = file.filename.split(".")[0] + ".npz"
     if not file_name:
         file_name = file.filename
     file_writer_path = directory_path + "/" + internal_folder + "/" + file_name
     data = open(file.name, "rb").read()
-    #data = file.stream.read()
-    #np.savez(file_writer_path, data)
+    # data = file.stream.read()
+    # np.savez(file_writer_path, data)
+    print(file_writer_path)
     res = requests.post(file_writer_path, data=data)
     return "ok"
 
-def save_trained_model(file:FileStorage, internal_folder:str, file_name:str=None,) -> str:
+
+def save_trained_model(file: FileStorage, internal_folder: str, file_name: str = None, ) -> str:
     directory_path = ORCHESTRATOR + "files" + MODELS_FOLDER
-    #file_name = file.filename.split(".")[0] + ".npz"
+    # file_name = file.filename.split(".")[0] + ".npz"
     if not file_name:
         file_name = file.filename
     file_writer_path = directory_path + "/" + internal_folder + "/" + file_name
     data = open(file.name, "rb").read()
-    #data = file.stream.read()
-    #np.savez(file_writer_path, data)
+    # data = file.stream.read()
+    # np.savez(file_writer_path, data)
     res = requests.post(file_writer_path, data=data)
     return "ok"
 
@@ -85,5 +87,4 @@ if __name__ == '__main__':
     print(data["y_test"])
     print(list(data.keys()))
     mnist_folder = "/home/sara/loko/datasets/mnist/"
-    #for nzp_file in os.listdir(mnist_folder)
-
+    # for nzp_file in os.listdir(mnist_folder)

@@ -8,5 +8,6 @@ ARG GATEWAY
 ENV GATEWAY=$GATEWAY
 ADD . /plugin
 ENV PYTHONPATH=$PYTHONPATH:/plugin
+ENV PYTHONBUFFERED=1
 WORKDIR /plugin/services
-CMD python services.py
+CMD python -u services.py

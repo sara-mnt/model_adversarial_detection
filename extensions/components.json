@@ -1,117 +1,117 @@
 [
- {
-  "name": "Model Adversarial Detection",
-  "description": "\n### Description\n.....\n### Input\n.....\n### Output\n.....\n\n",
-  "group": "Custom",
-  "icon": "RiCheckboxBlankCircleFill",
-  "click": "Send message",
-  "configured": true,
-  "inputs": [
-   {
-    "id": "dataset",
-    "label": "Dataset",
-    "service": "/services/dataset/read",
-    "to": "dataset"
-   },
-   {
-    "id": "train_model",
-    "label": "Train Model",
-    "service": "/services/model/train",
-    "to": "train_model"
-   },
-   {
-    "id": "detect_model",
-    "label": "Detect Model with adversarial examples",
-    "service": "/services/model/detect",
-    "to": "detect_model"
-   }
-  ],
-  "outputs": [
-   {
-    "id": "dataset",
-    "label": "Dataset"
-   },
-   {
-    "id": "train_model",
-    "label": "Train Model"
-   },
-   {
-    "id": "detect_model",
-    "label": "Detect Model"
-   }
-  ],
-  "options": {
-   "values": {},
-   "args": [
-    {
-     "name": "internal_folder",
-     "type": "text",
-     "label": "Internal dataset folder",
-     "helper": "",
-     "group": "",
-     "value": null,
-     "description": "Internal dataset folder to save file",
-     "validation": null
-    },
-    {
-     "name": "data_type",
-     "type": "text",
-     "label": "Data type in dataset",
-     "helper": "",
-     "group": "",
-     "value": null,
-     "description": "Specify if data to save are test or train, labels or images: y_train, y_test, X_train, X_test",
-     "validation": null
-    },
-    {
-     "name": "model_name",
-     "type": "select",
-     "label": "Model to train",
-     "helper": "",
-     "group": "",
-     "value": null,
-     "description": "Name of the model to train. Base : simple neural network",
-     "validation": null,
-     "options": [
-      "base"
-     ]
-    },
-    {
-     "name": "trained_model",
-     "type": "asyncSelect",
-     "label": "Trained model file",
-     "helper": "",
-     "group": "",
-     "value": null,
-     "description": "",
-     "validation": null,
-     "url": "http://localhost:9999/routes/model_adversarial_detection/services/models"
-    },
-    {
-     "name": "dataset",
-     "type": "asyncSelect",
-     "label": "Dataset",
-     "helper": "",
-     "group": "",
-     "value": null,
-     "description": "",
-     "validation": null,
-     "url": "http://localhost:9999/routes/model_adversarial_detection/services/datasets"
-    },
-    {
-     "name": "adversarial_method",
-     "type": "select",
-     "label": "Adversarial Method",
-     "helper": "",
-     "group": "",
-     "value": null,
-     "description": "",
-     "validation": null,
-     "options": [
-      "carlini_wagner"
-     ]
+  {
+    "name": "Model Adversarial Detection",
+    "description": "\n### Description\n.....\n### Input\n.....\n### Output\n.....\n\n",
+    "group": "Custom",
+    "icon": "RiCheckboxBlankCircleFill",
+    "click": "Send message",
+    "configured": true,
+    "inputs": [
+      {
+        "id": "dataset",
+        "label": "Dataset",
+        "service": "dataset/read",
+        "to": "dataset"
+      },
+      {
+        "id": "train_model",
+        "label": "Train Model",
+        "service": "model/train",
+        "to": "train_model"
+      },
+      {
+        "id": "detect_model",
+        "label": "Detect Model with adversarial examples",
+        "service": "model/detect",
+        "to": "detect_model"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "dataset",
+        "label": "Dataset"
+      },
+      {
+        "id": "train_model",
+        "label": "Train Model"
+      },
+      {
+        "id": "detect_model",
+        "label": "Detect Model"
+      }
+    ],
+    "options": {
+      "values": {},
+      "args": [
+        {
+          "name": "internal_folder",
+          "type": "text",
+          "label": "Internal dataset folder",
+          "helper": "",
+          "group": "",
+          "value": null,
+          "description": "Internal dataset folder to save file",
+          "validation": null
+        },
+        {
+          "name": "data_type",
+          "type": "text",
+          "label": "Data type in dataset",
+          "helper": "",
+          "group": "",
+          "value": null,
+          "description": "Specify if data to save are test or train, labels or images: y_train, y_test, X_train, X_test",
+          "validation": null
+        },
+        {
+          "name": "model_name",
+          "type": "select",
+          "label": "Model to train",
+          "helper": "",
+          "group": "",
+          "value": null,
+          "description": "Name of the model to train. Base : simple neural network",
+          "validation": null,
+          "options": [
+            "base"
+          ]
+        },
+        {
+          "name": "trained_model",
+          "type": "asyncSelect",
+          "label": "Trained model file",
+          "helper": "",
+          "group": "",
+          "value": null,
+          "description": "",
+          "validation": null,
+          "url": "http://localhost:9999/routes/model_adversarial_detection/models"
+        },
+        {
+          "name": "dataset",
+          "type": "asyncSelect",
+          "label": "Dataset",
+          "helper": "",
+          "group": "",
+          "value": null,
+          "description": "",
+          "validation": null,
+          "url": "http://localhost:9999/routes/model_adversarial_detection/datasets"
+        },
+        {
+          "name": "adversarial_method",
+          "type": "select",
+          "label": "Adversarial Method",
+          "helper": "",
+          "group": "",
+          "value": null,
+          "description": "",
+          "validation": null,
+          "options": [
+            "carlini_wagner"
+          ]
+        }
+      ]
     }
-   ]
   }
- }
 ]

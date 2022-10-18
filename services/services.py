@@ -53,6 +53,8 @@ def get_models_filenames(request):
         items = res.json().get("items")
         models = [item.get("name") for item in items]
         return sanic.json(models)
+    else:
+        return sanic.json([])
 
 
 @bp.get("/datasets")
@@ -67,6 +69,8 @@ def get_datasets(request):
         print(items)
         datasets = [item.get("name") for item in items]
         return sanic.json(datasets)
+    else:
+        return sanic.json([])
 
 
 # @bp.post('/myfirstservice')
@@ -74,11 +78,9 @@ def get_datasets(request):
 # @extract_value_args()
 
 @bp.post('/model/train')
-@doc.consumes(doc.JsonBody({"value": dict, "args": {"internal_folder": str, "model":str}}), location="body")
+@doc.consumes(doc.JsonBody({"value": dict, "args": {"internal_folder": str, "model": str}}), location="body")
 @extract_value_args()
 def train_model(value, args):
-    logger.debug(f'ARGS: {args}')
-    logger.debug(f'JSON: {value}')
     model_name = args.get("model")
     internal_folder = args.get("internal_folder")
     (X_train, y_train), (X_test, y_test) = \
@@ -98,7 +100,8 @@ def train_model(value, args):
 
 
 @bp.post('/model/detect')
-@doc.consumes(doc.JsonBody({"value": dict, "args": {"model": str, "internal_folder": str, "detection_method":str}}), location="body")
+@doc.consumes(doc.JsonBody({"value": dict, "args": {"model": str, "internal_folder": str, "detection_method": str}}),
+              location="body")
 @extract_value_args()
 def detect_model(value, args):
     logger.debug(f'ARGS: {args}')
@@ -125,7 +128,8 @@ def detect_model(value, args):
                                                     y_test=y_test)
         print(X_adversarial.shape)
 
-    return sanic.json(dict(msg=f"Adversarial detection con metodo {detection_method} eseguita con successo per il modello {model_name}"))
+    return sanic.json(dict(
+        msg=f"Adversarial detection con metodo {detection_method} eseguita con successo per il modello {model_name}"))
 
 
 # @doc.consumes(doc.JsonBody({"value": dict, "args": {"data_name": str, "internal_folder":str}}), location="body", content_type="application/json")
@@ -138,25 +142,24 @@ def detect_model(value, args):
 @doc.consumes(doc.File(name="file"), location="formData", content_type="multipart/form-data")
 @extract_value_args(file=True)
 async def read_dataset(file, args):
-    logger.debug(f'FILE: {file}')
-    logger.debug(f'ARGS: {args}')
     file = file[0]
     internal_folder = args.get("internal_folder")
     data_type = args.get("data_type")
-    with tempfile.NamedTemporaryFile(mode="wb", suffix="." + file.filename.split(".")[-1]) as tt:
-        tt.write(file.stream.read())
+    with tempfile.NamedTemporaryFile(mode="wb", suffix="." + file.name.split(".")[-1]) as tt:
+        tt.write(file.body)
         tt.seek(0)
         with open(tt.name, "rb") as f:
             data = extract_from_gzip(f)
             temp_npz = tempfile.NamedTemporaryFile(suffix=".npz")
             np.savez(temp_npz, **{data_type: data})
-            file_name = file.filename.split(".")[0] + ".npz"
+            file_name = file.name.split(".")[0] + ".npz"
             save_dataset(file=temp_npz, file_name=file_name, internal_folder=internal_folder)
 
-    logger.debug(f'ARGS: {args}')
-    logger.debug(f'JSON: {file[0].name}')
-    n = int(args.get('n'))
-    return sanic.json(dict(msg=f"{'#' * n} You have uploaded the file: {file[0].name}! {'#' * n}"))
+    # logger.debug(f'ARGS: {args}')
+    # logger.debug(f'JSON: {file[0].name}')
+    # n = int(args.get('n'))
+    # return sanic.json(dict(msg=f"{'#' * n} You have uploaded the file: {file.name}! {'#' * n}"))
+    return sanic.json(dict(msg=f"You have uploaded the file: {file.name}!"))
 
 
 @app.exception(Exception)
