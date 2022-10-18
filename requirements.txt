@@ -1,8 +1,7 @@
-loko-extensions == 0.0.1.dev5
-flask-compress
 Pillow
 adversarial-robustness-toolbox
 czifile
+loko-extensions == 0.0.1.dev5
 matplotlib
 sanic == 22.6.2
 sanic-cors

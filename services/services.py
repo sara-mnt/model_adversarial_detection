@@ -13,9 +13,9 @@ from loko_extensions.business.decorators import extract_value_args
 
 import tensorflow as tf
 
-
 logger = stream_logger(__name__)
 tf.compat.v1.disable_eager_execution()
+
 
 def get_app(name):
     app = Sanic(name)
@@ -29,6 +29,7 @@ app = get_app(name)
 bp = Blueprint("default", url_prefix=f"/")
 app.config["API_TITLE"] = name
 
+
 @bp.post('/myfirstservice')
 @doc.consumes(doc.JsonBody({"value": dict, "args": {"data_name": str}}), location="body")
 @extract_value_args()
@@ -40,9 +41,10 @@ async def f(value, args):
 
 
 @bp.post('/read_dataset')
-@doc.consumes(doc.JsonBody({"value": dict, "args": {"new_model_name": str}}), location="formData", content_type="multipart/form-data")
+@doc.consumes(doc.JsonBody({"value": dict, "args": {"new_model_name": str}}), location="formData",
+              content_type="multipart/form-data")
 @doc.consumes(doc.File(name="file"), location="formData", content_type="multipart/form-data")
-#@extract_value_args(file=True)
+# @extract_value_args(file=True)
 async def f2(file, args):
     logger.debug(f'FILE: {file}')
     logger.debug(f'ARGS: {args}')
@@ -62,7 +64,7 @@ async def f2(file, args):
     logger.debug(f'ARGS: {args}')
     logger.debug(f'JSON: {file[0].name}')
     n = int(args.get('n'))
-    return sanic.json(dict(msg=f"{'#'*n} You have uploaded the file: {file[0].name}! {'#'*n}"))
+    return sanic.json(dict(msg=f"{'#' * n} You have uploaded the file: {file[0].name}! {'#' * n}"))
 
 
 @app.exception(Exception)

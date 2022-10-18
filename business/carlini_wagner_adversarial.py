@@ -1,13 +1,14 @@
 import numpy as np
+import tensorflow as tf
 from keras.datasets import mnist
 
 from art.attacks.evasion import CarliniL0Method, DPatch, CarliniL2Method
 from art.estimators.classification import KerasClassifier
+import tensorflow as tf
+from tensorflow import keras
 from keras import models
 
 from utils.targets_utils import get_inputs_targets_test_train
-
-import tensorflow as tf
 
 tf.compat.v1.disable_eager_execution()
 
@@ -35,6 +36,7 @@ def estimate_model_affidability(model_path: str, X_train, X_test, y_train, y_tes
     print(carlini_wagner_attack.confidence)
 
     print(x_adversarial.shape)
+
 
 if __name__ == '__main__':
     modelpath = 'mnist.h5'
