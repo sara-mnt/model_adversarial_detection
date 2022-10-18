@@ -1,9 +1,10 @@
-loko-extensions == 0.0.1.dev5
-flask-compress
 Pillow
 adversarial-robustness-toolbox
+czifile
 ds4biz-commons
 ds4biz-flask
-czifile
+flask-compress
+loko-extensions == 0.0.1.dev5
 matplotlib
+tensorflow
 werkzeug

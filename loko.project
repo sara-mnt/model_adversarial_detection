@@ -1,17 +1,17 @@
 {
-  "name": "prova_2",
-  "id": "prova_2",
+  "name": "model_adversarial_detection",
+  "id": "model_adversarial_detection",
   "description": "",
   "created_on": "14/10/2022, 17:51:10",
-  "last_modify": "18/10/2022, 10:49:20",
+  "last_modify": "18/10/2022, 16:04:12",
   "graphs": {
     "main": {
       "nodes": [
         {
           "id": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
           "position": {
-            "x": 433.82221580449294,
-            "y": -0.4059121451401211
+            "x": 581.822215804493,
+            "y": -19.40591214514012
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -133,16 +133,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 433.82221580449294,
-            "y": -0.4059121451401211
+            "x": 581.822215804493,
+            "y": -19.40591214514012
           },
           "__class__": "Node"
         },
         {
           "id": "5bedec45-c6da-42c6-91e3-1d43f66e85e6",
           "position": {
-            "x": 580.5519829011657,
-            "y": 193.68502864717047
+            "x": 506.55198290116573,
+            "y": 319.6850286471705
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -230,16 +230,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 580.5519829011657,
-            "y": 193.68502864717047
+            "x": 506.55198290116573,
+            "y": 319.6850286471705
           },
           "__class__": "Node"
         },
         {
           "id": "a2f1acf6-5e43-4e8a-befb-50e06f2fd939",
           "position": {
-            "x": 594.672985634988,
-            "y": 355.10565288708403
+            "x": 724.672985634988,
+            "y": 382.10565288708403
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -317,7 +317,7 @@
               "values": {
                 "comment": "",
                 "alias": "Generate adversarial dataset",
-                "debug": false,
+                "debug": true,
                 "type": "String",
                 "value": "Hello world!"
               }
@@ -327,16 +327,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 594.672985634988,
-            "y": 355.10565288708403
+            "x": 724.672985634988,
+            "y": 382.10565288708403
           },
           "__class__": "Node"
         },
         {
           "id": "f39f0398-3d89-4c31-9e29-921ac6f25e3c",
           "position": {
-            "x": 769.4494855504977,
-            "y": 66.52614251015201
+            "x": 959.4494855504977,
+            "y": 36.52614251015201
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -430,8 +430,8 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 769.4494855504977,
-            "y": 66.52614251015201
+            "x": 959.4494855504977,
+            "y": 36.52614251015201
           },
           "__class__": "Node"
         },
@@ -567,10 +567,10 @@
           "__class__": "Node"
         },
         {
-          "id": "01fcf0ea-481b-46da-a8f0-ddae37bf839d",
+          "id": "4735b2b4-baa0-40d9-bce8-c583fd8fee52",
           "position": {
-            "x": 1074,
-            "y": 238
+            "x": 585.9481656584849,
+            "y": 170.8765822349506
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -580,6 +580,104 @@
           "height": 56,
           "selected": false,
           "dragging": false,
+          "data": {
+            "name": "File Reader",
+            "events": null,
+            "description": "### Description\nThe FILE READER component allows the reading of individual files.\n\n### Output\nSetting the **Read Content** parameter to **False**, the output provides the file path in PosixPath format. The component will then need to be connected to other components to read the content, for example *LineReader*.\n\nOn the contrary, setting the **Read Content** parameter to **True**, you can choose whether to read the content in *Binary* format. This format will be selected for reading non-text files.",
+            "inputs": [
+              {
+                "id": "input",
+                "label": "input"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Inputs",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "value",
+                  "type": "files",
+                  "label": "File",
+                  "fragment": "files",
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "read_content",
+                  "type": "boolean",
+                  "label": "Read content"
+                },
+                {
+                  "name": "binary",
+                  "type": "dynamic",
+                  "label": "Binary",
+                  "dynamicType": {
+                    "true": "boolean"
+                  },
+                  "parent": "read_content"
+                }
+              ],
+              "click": "Send file",
+              "icon": "RiFileList3Fill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "read_content": false,
+                "value": {
+                  "name": "t10k-labels-idx1-ubyte.gz",
+                  "path": "data/data/t10k-labels-idx1-ubyte.gz",
+                  "parent": "data/data",
+                  "isDir": false,
+                  "hidden": false
+                }
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "__class__": "Node"
+        },
+        {
+          "id": "0d77896a-5909-4285-8492-04cb6a08492d",
+          "position": {
+            "x": 975,
+            "y": 200
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": null,
+          "dragging": null,
           "data": {
             "name": "CW_adversarial_detector",
             "events": null,
@@ -655,7 +753,7 @@
                   "value": null,
                   "description": "",
                   "validation": null,
-                  "url": "http://localhost:8080/services/models"
+                  "url": "http://localhost:9999/routes/model_adversarial_detection/services/models"
                 },
                 {
                   "name": "dataset",
@@ -666,30 +764,12 @@
                   "value": null,
                   "description": "",
                   "validation": null,
-                  "url": "http://localhost:8080/services/datasets"
-                },
-                {
-                  "name": "adversarial_method",
-                  "type": "asyncSelect",
-                  "label": "Adversarial Method",
-                  "helper": "",
-                  "group": "",
-                  "value": null,
-                  "description": "",
-                  "validation": null,
-                  "url": "http://localhost:8080/services/adversarial_method"
+                  "url": "http://localhost:9999/routes/model_adversarial_detection/services/datasets"
                 }
               ],
               "click": "Send message",
               "icon": "RiCheckboxBlankCircleFill",
-              "values": {
-                "comment": "",
-                "alias": "",
-                "debug": false,
-                "internal_folder": "mnist",
-                "dataset": "",
-                "model": ""
-              }
+              "values": {}
             },
             "locked": null
           },
@@ -708,34 +788,6 @@
           "data": {
             "startColor": "#56A6DC",
             "stopColor": "#D770AD"
-          },
-          "selected": false,
-          "dragging": false,
-          "__class__": "Edge"
-        },
-        {
-          "id": "reactflow__edge-987a01d9-5061-47d2-9dd6-d13572a37c36output-f39f0398-3d89-4c31-9e29-921ac6f25e3c45c9fac6-9f6a-485d-90cb-99eaa3acab77",
-          "source": "987a01d9-5061-47d2-9dd6-d13572a37c36",
-          "sourceHandle": "output",
-          "target": "f39f0398-3d89-4c31-9e29-921ac6f25e3c",
-          "targetHandle": "45c9fac6-9f6a-485d-90cb-99eaa3acab77",
-          "data": {
-            "startColor": "#56A6DC",
-            "stopColor": "#D770AD"
-          },
-          "selected": false,
-          "dragging": false,
-          "__class__": "Edge"
-        },
-        {
-          "id": "reactflow__edge-1cdac4e7-7fc6-44a7-bd58-8355fab018feoutput-01fcf0ea-481b-46da-a8f0-ddae37bf839ddataset",
-          "source": "1cdac4e7-7fc6-44a7-bd58-8355fab018fe",
-          "sourceHandle": "output",
-          "target": "01fcf0ea-481b-46da-a8f0-ddae37bf839d",
-          "targetHandle": "dataset",
-          "data": {
-            "startColor": "#56A6DC",
-            "stopColor": "#888"
           },
           "selected": false,
           "dragging": false,
