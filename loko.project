@@ -3,7 +3,7 @@
   "id": "prova_2",
   "description": "",
   "created_on": "14/10/2022, 17:51:10",
-  "last_modify": "18/10/2022, 13:26:39",
+  "last_modify": "18/10/2022, 15:10:41",
   "graphs": {
     "main": {
       "nodes": [
@@ -596,8 +596,7 @@
                 "internal_folder": "mnist",
                 "data_type": "y_test"
               }
-            },
-            "locked": null
+            }
           },
           "selectable": true,
           "draggable": true,

@@ -40,9 +40,9 @@ async def f(value, args):
 
 
 @bp.post('/read_dataset')
-@doc.consumes(doc.JsonBody({"value": dict, "args": {"new_model_name": str}}), location="formData", content_type="multipart/form-data")
+@doc.consumes(doc.JsonBody({"value": dict, "args": {"data_name": str, "internal_folder":str}}), location="body", content_type="application/json")
 @doc.consumes(doc.File(name="file"), location="formData", content_type="multipart/form-data")
-#@extract_value_args(file=True)
+@extract_value_args(file=True)
 async def f2(file, args):
     logger.debug(f'FILE: {file}')
     logger.debug(f'ARGS: {args}')

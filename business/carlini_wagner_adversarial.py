@@ -1,13 +1,13 @@
 import numpy as np
-from keras.datasets import mnist
-
 from art.attacks.evasion import CarliniL0Method, DPatch, CarliniL2Method
 from art.estimators.classification import KerasClassifier
-from keras import models
 
 from utils.targets_utils import get_inputs_targets_test_train
 
 import tensorflow as tf
+
+mnist = tf.keras.datasets.mnist
+models = tf.keras.models
 
 tf.compat.v1.disable_eager_execution()
 
