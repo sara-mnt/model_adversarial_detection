@@ -5,18 +5,20 @@ import tempfile
 from typing import List, Dict
 import matplotlib.pyplot as plt
 import numpy as np
-from keras.datasets import mnist
+import tensorflow as tf
 import requests
 from loko_extensions.business.decorators import extract_value_args
 
 from business.carlini_wagner_adversarial import estimate_model_affidability
 
-import tensorflow as tf
 
 from config.app_config import ORCHESTRATOR, DATASETS_FOLDER
 from utils.file_utils import extract_from_gzip, save_dataset
 
 tf.compat.v1.disable_eager_execution()
+
+mnist = tf.keras.datasets.mnist
+
 
 def estimate_model(model_saved:str, data_file:str=None) -> str:
     if not data_file:
